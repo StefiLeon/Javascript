@@ -125,15 +125,15 @@ cantidadDeFotos.placeholder = "Ingrese la cantidad de fotos a imprimir";
 function presupuestarImpresion() {
     let presupuestoImpresion = 0;
     if (opcionChica.selected) {
-        presupuestoImpresion = (fotoChica.value * iva);
+        presupuestoImpresion = (fotoChica * iva);
     } else if (opcionMediana.selected) {
-        presupuestoImpresion = (fotoMediana.value * iva);
+        presupuestoImpresion = (fotoMediana * iva);
     } else if (opcionGrande.selected) {
-        presupuestoImpresion = (fotoGrande.value * iva)
+        presupuestoImpresion = (fotoGrande * iva)
     } else if (opcionPoster.selected) {
-        presupuestoImpresion = (poster.value * iva);
+        presupuestoImpresion = (poster * iva);
     } else {
         alert("Valor erróneo");
     }
-    alert("El presupuesto para " + cantidadDeFotos.value + " fotos es de $" + (presupuestoImpresion*cantidadDeFotos.value));
+    alert("El presupuesto para " + cantidadDeFotos.value + " fotos es de $" + (presupuestoImpresion*parseInt(cantidadDeFotos.value)));
 }
