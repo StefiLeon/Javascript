@@ -18,7 +18,6 @@ let contadorImpresion = 0;
 
 //Funcion para presupuestar fotos
 function presupuestarFotos() {
-    //let presupuestoFotos = 0;
     if (opcionAmistoso.selected) {
         presupuestoFotos = 3000;
     } else if (opcionCampeonato.selected) {
@@ -74,7 +73,7 @@ function presupuestarImpresion() {
     const presupuestoTotalImpresion = document.createElement('p');
     const botonDeCompraImpresion = document.createElement("button");
     presupuestoTotalImpresion.id = "presupuestoTotalImpresion";
-    presupuestoTotalImpresion.innerHTML = "El presupuesto total es de $" + presupuestoImpresion;
+    presupuestoTotalImpresion.innerHTML = "El presupuesto total es de $" + (presupuestoImpresion*cantidadDeFotos.value);
     presupuestoTotalImpresion.style.paddingTop = "15px";
     presupuestoTotalImpresion.style.color = "white";
     presupuestoTotalImpresion.style.fontSize = "large";
@@ -83,7 +82,7 @@ function presupuestarImpresion() {
     botonDeCompraImpresion.setAttribute("class", "btn btn-light btn-block");
     botonDeCompraImpresion.addEventListener("click", guardarEnCarritoImpresion);
     if(contadorImpresion>0) {
-        document.getElementById("presupuestoTotalImpresion").innerHTML = "El precio total es de $" + presupuestoImpresion;
+        document.getElementById("presupuestoTotalImpresion").innerHTML = "El precio total es de $" + (presupuestoImpresion*cantidadDeFotos.value);
         document.getElementById("botonDeCompraImpresion").innerHTML = "Comprar";
         botonDeCompraImpresion.addEventListener("click", guardarEnCarritoImpresion);
         return;
@@ -96,11 +95,11 @@ function presupuestarImpresion() {
 
 //Funcion para guardar en carrito
 function guardarEnCarritoFotos() {
-    console.log(presupuestoFotos);
     localStorage.setItem('compraFotos', parseInt(presupuestoFotos));
+    console.log("Valor de sesión de fotos: $" + localStorage.getItem('compraFotos'));
 }
 
 function guardarEnCarritoImpresion() {
-    console.log(presupuestoImpresion);
-    localStorage.setItem('compraImpresion', parseInt(presupuestoImpresion));
+    localStorage.setItem('compraImpresion', parseInt(presupuestoImpresion*cantidadDeFotos.value));
+    console.log("Valor de impresion: $" + localStorage.getItem('compraImpresion'));
 }
